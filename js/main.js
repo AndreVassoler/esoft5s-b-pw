@@ -25,3 +25,48 @@ if (evolucao) {
 
   h2.textContent = `Informações sobre ${evolucao}`;
 }
+
+// Função para obter a data atual 
+function getCurrentDate() {
+  const date = new Date();
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear();
+  const hora = date.getHours();
+  const minutos = date.getMinutes();
+  return `${day}/${month}/${year} ${hora}:${minutos}`;
+}
+
+// Função para incrementar o contador de visitas e salvar no localStorage
+function incrementVisits() {
+  let visits = localStorage.getItem('visits');
+  if (!visits) {
+    visits = 1;
+  } else {
+    visits = parseInt(visits) + 1;
+  }
+  localStorage.setItem('visits', visits);
+  localStorage.setItem('lastVisitDate', getCurrentDate());
+}
+
+// Função para exibir o contador de visitas e a última data de acesso
+function displayVisitInfo() {
+  const p = document.querySelector(`.contador-visita`);
+  const visits = localStorage.getItem('visits') || 0;
+  const lastVisitDate = localStorage.getItem('lastVisitDate') || 'Nunca acessado antes';
+ 
+  p.textContent = `Esta página foi visitada ${visits} vezes. A última visita foi: ${lastVisitDate}`;
+}
+
+
+
+
+
+
+
+// Chama funções
+incrementVisits();
+displayVisitInfo();
+
+
+
