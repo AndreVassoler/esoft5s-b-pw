@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <title>Página Pokémon</title>
-    <link rel="stylesheet" href="./css/todoList.css">
-    <link rel="icon" href="./img/pokebola.png">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo List</title>
 
-<body>
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/layout.css" />
+    <link rel="stylesheet" href="../assets/css/todo-list.css" />
+  </head>
+  <body>
     <header>
-        <h1>Todo List</h1>
+      <h1><a href="../index.html">Todo List</a></h1>
     </header>
-    
+
     <main>
-        <form>
-            <input type="text">
-            <button type="submit">adicionar tarefa </button>
+      <section>
+        <form id="form-todo">
+          <input
+            type="text"
+            id="input-todo"
+            placeholder="Digite uma nova tarefa"
+            aria-label="Digite uma nova tarefa"
+          />
+          <button type="submit" aria-label="Adicionar tarefa">Adicionar</button>
         </form>
+
+        <ul id="list-todo" aria-label="Lista de tarefas"></ul>
+      </section>
     </main>
 
-
-
-
-    <footer aria-label="Rodapé">
-        <a aria-label="Copyright">
-            &copy; 2024 Página do Pokémon Squirtle. Todos os direitos reservados.
-        </a>
-        <a href="#info-squirtle" class="links-footer" style="color: white;">Voltar para o topo</a>
-        <a href="mailto:contato@squirtlepage.com" class="links-footer" style="color: orangered ">Contato via e-mail</a>
-        <a href="tel:+5555555555" class="links-footer" style="color: limegreen;">Telefone: (55) 5555-5555</a>
-        <p class="contador-visita"></p>
+    <footer aria-label="Rodapé" style="clear: both">
+      <p aria-label="Copyright" style="color: white">&copy; 2024 Todo List.</p>
     </footer>
-    <script src="../js/todoList.js"></script>
-</body>
 
+    <script src="../assets/js/todoList.js"></script>
+    <script src="../assets/js/visitCounter.js"></script>
+  </body>
 </html>
