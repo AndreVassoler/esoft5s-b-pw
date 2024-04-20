@@ -20,7 +20,7 @@ form.addEventListener("submit", function (event) {
 });
 
 function addTaskToList(text) {
-  const li = document.createElement("li");
-  li.textContent = text;
-  list.appendChild(li);
+  const p = document.createElement("p");
+  p.textContent = text;
+  list.appendChild(p);
 }
