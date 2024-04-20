@@ -87,6 +87,7 @@ button:hover {
  main table {
     display: flex;
     flex-direction: column;
+    text-align: center;
     color: black;
     background-color: #fff;
     padding: 20px;
@@ -94,6 +95,28 @@ button:hover {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+ }
+
+ main form input {
+   padding: 8px 16px;
+   font-size: 16px;
+   border: 1px solid #333;
+ }
+
+ main form button {
+   padding: 8px 16px;
+   font-size: 16px;
+   background-color: #0074d9;
+   color: #fff;
+   border: none;
+   cursor: pointer;
+ }
+
+ main form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 12px;
  }
 
 
