@@ -3,17 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../page/css/todoList.css">
+    <link rel="icon" href="../img/pokebola.png">
+
     <title>Todo List</title>
 
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
-
-    <link rel="stylesheet" href="../assets/css/reset.css" />
-    <link rel="stylesheet" href="../assets/css/layout.css" />
-    <link rel="stylesheet" href="../assets/css/todo-list.css" />
   </head>
   <body>
     <header>
-      <h1><a href="../index.html">Todo List</a></h1>
+      <h1><a href="../index.html" style="text-decoration: none; color: #fff;">Todo List</a></h1>
     </header>
 
     <main>
@@ -22,10 +21,10 @@
           <input
             type="text"
             id="input-todo"
-            placeholder="Digite uma nova tarefa"
-            aria-label="Digite uma nova tarefa"
+            placeholder="Digite uma tarefa"
+            aria-label="Digite uma tarefa"
           />
-          <button type="submit" aria-label="Adicionar tarefa">Adicionar</button>
+          <button type="submit" aria-label="Adicionar tarefa">Adicionar Tarefa</button>
         </form>
 
         <ul id="list-todo" aria-label="Lista de tarefas"></ul>
@@ -34,9 +33,10 @@
 
     <footer aria-label="Rodapé" style="clear: both">
       <p aria-label="Copyright" style="color: white">&copy; 2024 Todo List.</p>
+      <p class="contador-visita"></p>
     </footer>
 
-    <script src="../assets/js/todoList.js"></script>
-    <script src="../assets/js/visitCounter.js"></script>
+    <script src="../js/todoList.js"></script>
+    <script src="../js/main.js"></script>
   </body>
 </html>
