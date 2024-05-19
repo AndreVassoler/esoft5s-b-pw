@@ -25,6 +25,7 @@ form.addEventListener("submit", function (event) {
 
 function addTaskToList(task) {
   const li = document.createElement("li");
+  li.style.border = "1px solid black"; // Adicionando uma borda preta de 1px
 
   const taskTitle = document.createElement("p");
   taskTitle.textContent = task.title;
@@ -32,21 +33,13 @@ function addTaskToList(task) {
 
   if (task.description) {
     const taskDescription = document.createElement("p");
-    taskDescription.textContent = task.description;
+    const descriptionText = task.description.replace(/\n/g, "<br>"); // Substituindo quebras de linha por elementos <br>
+    taskDescription.innerHTML = descriptionText; // Usando innerHTML para interpretar as quebras de linha como HTML
     li.appendChild(taskDescription);
   }
 
-  const button = document.createElement("button");
-  button.textContent = "Delete";
-  button.addEventListener("click", function () {
-    list.removeChild(li);
-    const index = tasks.findIndex(t => t.title === task.title && t.description === task.description);
-    if (index !== -1) {
-      tasks.splice(index, 1);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    }
-  });
-
-  li.appendChild(button);
   list.appendChild(li);
+
+  const lineBreak = document.createElement("br"); // Adicionando uma quebra de linha após cada tarefa
+  list.appendChild(lineBreak);
 }

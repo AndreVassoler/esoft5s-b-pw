@@ -15,10 +15,10 @@ td {
 }
 
 * {
-    box-sizing: border-box; /* faz com que o padding não ultrapasse o limite da tela */
+    box-sizing: border-box;
 }
 
-/* Variáveis de cores */
+
 :root {
     --primary-color: #0074d9;
     --primary-color-hover: #0056b3;
@@ -35,7 +35,7 @@ body {
     background-color: var(--background-color);
 }
 
-/* Layout */
+
 main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -48,6 +48,8 @@ button {
     background-color: var(--primary-color);
     border: none;
     cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
 }
 
 button:hover {
@@ -67,42 +69,15 @@ header h1 {
     font-size: 24px;
 }
 
-nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--header-footer-bg);
-    padding: 10px;
-    margin-bottom: 20px;
-    list-style: none;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text-light-color);
-    font-weight: bold;
-    margin: 0 15px;
-}
-
-main section,
-main article,
-main table {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    color: var(--text-color);
-    background-color: var(--text-light-color);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 main form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    background-color: var(--text-light-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 main form input,
@@ -111,11 +86,11 @@ main form textarea {
     font-size: 16px;
     border: 1px solid var(--text-color);
     width: 100%;
+    border-radius: 5px;
 }
 
-main form button {
-    padding: 8px 16px;
-    font-size: 16px;
+main form textarea {
+    resize: vertical;
 }
 
 footer {
@@ -133,10 +108,11 @@ footer a {
     text-decoration: none;
 }
 
-/* Estilo das tarefas */
+
 ul#list-todo {
     list-style: none;
     padding: 0;
+    margin: 20px 0;
 }
 
 li.task-item {
@@ -148,28 +124,26 @@ li.task-item {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border-left: 4px solid var(--primary-color);
 }
 
 li.task-item h3 {
-    margin: 0;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: var(--primary-color);
 }
 
 li.task-item p {
     margin: 0;
+    white-space: pre-wrap; 
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        gap: 12px;
-    }
     main {
         grid-template-columns: 1fr;
     }
 }
 
-/* Animações */
 #info-squirtle,
 #caracteristicas,
 #curiosidades,
