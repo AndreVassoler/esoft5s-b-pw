@@ -18,14 +18,12 @@
     <main>
       <section>
         <form id="form-todo">
-          <input
-            type="text"
-            id="input-todo"
-            placeholder="Digite uma tarefa"
-            aria-label="Digite uma tarefa"
-          />
-          <button type="submit" aria-label="Adicionar tarefa">Adicionar Tarefa</button>
+          <input type="text" id="input-todo" placeholder="Título da tarefa" required>
+          <textarea id="input-description" placeholder="Descrição da tarefa"></textarea>
+          <button type="submit">Adicionar Tarefa</button>
         </form>
+        <ul id="list-todo"></ul>
+        
 
         <ul id="list-todo" aria-label="Lista de tarefas"></ul>
       </section>
