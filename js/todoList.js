@@ -1,45 +1,103 @@
-const form = document.getElementById("form-todo");
-const input = document.getElementById("input-todo");
-const inputDescription = document.getElementById("input-description");
-const list = document.getElementById("list-todo");
+function callDialog(taskIndex, task, description) {
+  const dialog = document.createElement('dialog');
+  dialog.innerHTML = `
+      <form id="edit-form">
+          <input type="text" id="edit-task" name="task" value="${task}">
+          <br>
+          <textarea id="edit-description" name="description">${description}</textarea>
+          <menu>
+              <button type="submit" id="edit-dialog">Editar Tarefa</button>
+              <button type="button" id="cancel-dialog">Cancelar</button>
+          </menu>
+      </form>
+  `;
+  document.body.appendChild(dialog);
 
-const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-tasks.forEach((task) => addTaskToList(task));
+  document.getElementById('cancel-dialog').addEventListener('click', function () {
+      dialog.close();
+      dialog.remove();
+  });
 
-form.addEventListener("submit", function (event) {
+  document.getElementById('edit-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const updatedTask = document.getElementById('edit-task').value.trim();
+      const updatedDescription = document.getElementById('edit-description').value.trim();
+      if (updatedTask !== '' && updatedDescription !== '') {
+          updateTask(taskIndex, updatedTask, updatedDescription);
+          dialog.close();
+          dialog.remove();
+      }
+  });
+
+  dialog.showModal();
+}
+
+function callTask(event) {
   event.preventDefault();
 
-  const title = input.value.trim();
-  const description = inputDescription.value.trim();
+  var taskInput = document.getElementById('todo-name');
+  var descriptionInput = document.getElementById('todo-description');
+  var taskText = taskInput.value.trim();
+  var descriptionText = descriptionInput.value.trim();
 
-  if (title !== "") {
-    const task = { title, description };
-    addTaskToList(task);
-    tasks.push(task);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    input.value = "";
-    inputDescription.value = "";
-    input.focus();
+  if (taskText !== '' && descriptionText !== '') {
+      var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+      var newTask = {
+          task: taskText,
+          description: descriptionText
+      };
+
+      tasks.push(newTask);
+
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+
+      taskInput.value = '';
+      descriptionInput.value = '';
+
+      displayTasks();
   }
-});
-
-function addTaskToList(task) {
-  const li = document.createElement("li");
-  li.style.border = "1px solid black"; // Adicionando uma borda preta de 1px
-
-  const taskTitle = document.createElement("p");
-  taskTitle.textContent = task.title;
-  li.appendChild(taskTitle);
-
-  if (task.description) {
-    const taskDescription = document.createElement("p");
-    const descriptionText = task.description.replace(/\n/g, "<br>"); // Substituindo quebras de linha por elementos <br>
-    taskDescription.innerHTML = descriptionText; // Usando innerHTML para interpretar as quebras de linha como HTML
-    li.appendChild(taskDescription);
-  }
-
-  list.appendChild(li);
-
-  const lineBreak = document.createElement("br"); // Adicionando uma quebra de linha após cada tarefa
-  list.appendChild(lineBreak);
 }
+
+function updateTask(taskIndex, updatedTask, updatedDescription) {
+  var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  tasks[taskIndex] = {
+      task: updatedTask,
+      description: updatedDescription
+  };
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  displayTasks();
+}
+
+function displayTasks() {
+  var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  var taskList = document.getElementById('task-list');
+
+  taskList.innerHTML = '';
+
+  tasks.forEach(function (task, index) {
+      var listItem = document.createElement('li');
+      var taskTitle = document.createElement('span');
+      var descriptionText = document.createTextNode(task.description);
+      var buttonTask = document.createElement('button');
+
+      buttonTask.classList.add('buttonClass');
+      buttonTask.textContent = '✏️';
+      buttonTask.title = 'Editar tarefa';
+      buttonTask.onclick = () => {
+          callDialog(index, task.task, task.description);
+      };
+
+      taskTitle.textContent = task.task + ':';
+      taskTitle.className = 'title-bold';
+      listItem.appendChild(taskTitle);
+      listItem.appendChild(document.createElement('br'));
+      listItem.appendChild(descriptionText);
+      listItem.appendChild(buttonTask);
+      taskList.appendChild(listItem);
+  });
+}
+
+window.onload = function () {
+  displayTasks();
+};
