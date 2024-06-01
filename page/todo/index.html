@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="./todoList.css">
+    <link rel="icon" href="../../img/pokebola.png">
+
+    <title>Todo List</title>
+
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Todo List</h1>
+      </header>
+      <main>
+        <!-- Formulário para adicionar tarefas -->
+        <form id="taskForm" onsubmit="addTask(event)">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            required
+            placeholder="Informe o título da tarefa"
+          />
+          <textarea
+            id="description"
+            name="description"
+            required
+            placeholder="Informe a descrição da tarefa"
+          ></textarea>
+          <button type="submit">Salvar Tarefa</button>
+        </form>
+
+        <!-- Lista de tarefas -->
+        <ul id="taskList"></ul>
+      </main>
+      <footer>&copy; 2024 Todo List</footer>
+    </div>
+
+    <script src="./todoList.js"></script>
+    <script src="../../js/main.js"></script>
+  </body>
+</html>
