@@ -53,7 +53,7 @@ function deleteTask(taskId) {
     taskList.removeChild(taskElement)
 }
 
-// Função para adicionar tarefa
+// Função para excluir tarefa
 function addTask(event) {
     event.preventDefault() // Evita o recarregamento da página
     const taskId = new Date().getTime()
@@ -71,7 +71,7 @@ function addTask(event) {
     li.innerHTML = `
             <h2>${taskTitle}</h2>
             <p>${taskDescription}</p>
-            <button onclick="deleteTask(${taskId})" class="deleteTask">❌</button>
+            <button onclick="deleteTask(${taskId})" class="deleteTask" " style="float: right;">❌</button>
     `
 
     taskList.appendChild(li)
@@ -93,10 +93,13 @@ window.addEventListener('DOMContentLoaded', () => {
             <li id="${task.id}">
                 <h2>${task.title}</h2>
                 <p>${task.description}</p>
-                <button onclick="deleteTask(${task.id})">Delete</button>
+                <button onclick="deleteTask(${task.id})">❌</button>
             </li>
+            
         `)
         .join('')
 })
+
+
 
 
