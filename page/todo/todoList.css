@@ -77,6 +77,7 @@ button {
 .deleteTask {
   background-color: #383c3f;
   border: solid 1px black;
+  cursor: pointer;
 }
 
 ul {
