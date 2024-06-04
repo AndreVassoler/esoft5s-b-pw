@@ -67,11 +67,16 @@ textarea::placeholder {
 }
 
 button {
-  background-color: #0074d9;
+ background-color: #0074d9;
   color: #fff;
   border: none;
   padding: 8px 16px;
   cursor: pointer;
+}
+
+.deleteTask {
+  background-color: #383c3f;
+  border: solid 1px black;
 }
 
 ul {

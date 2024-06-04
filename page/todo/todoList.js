@@ -71,7 +71,7 @@ function addTask(event) {
     li.innerHTML = `
             <h2>${taskTitle}</h2>
             <p>${taskDescription}</p>
-            <button onclick="deleteTask(${taskId})">Delete</button>
+            <button onclick="deleteTask(${taskId})" class="deleteTask">❌</button>
     `
 
     taskList.appendChild(li)
